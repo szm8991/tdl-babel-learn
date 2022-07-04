@@ -18,4 +18,4 @@ export const res = codeFrameColumns(
   }
 )
 
-console.log(res)
+// console.log(res)

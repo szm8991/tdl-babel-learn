@@ -30,7 +30,7 @@ export function plugin({ types, template }: Babel): PluginDefinition {
       },
     },
     post(file) {
-      console.log(this.cache)
+      // console.log(this.cache)
     },
   }
 }

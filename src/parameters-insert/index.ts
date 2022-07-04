@@ -69,5 +69,5 @@ traverse(ast, {
   },
 })
 
-export const { code } = generate(ast)
+export const { code: paraCode } = generate(ast)
 export * from './plugin'

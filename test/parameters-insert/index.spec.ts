@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import { code } from '../../src'
+import { paraCode } from '../../src'
 
 describe('should', () => {
   it('exported', () => {
-    expect(code).toMatchInlineSnapshot(`
+    expect(paraCode).toMatchInlineSnapshot(`
       "console.log(\\"filename: (2, 4)\\", 1);
 
       function func() {
