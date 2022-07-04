@@ -12,7 +12,7 @@ export const { code: presetCode, map } = transformSync(sourceCode, {
     [
       '@babel/preset-env',
       {
-        debug: true,
+        // debug: true,
         useBuiltIns: 'usage',
         corejs: 3,
       },
@@ -27,4 +27,4 @@ export const { code: presetCode, map } = transformSync(sourceCode, {
     ],
   ],
 })
-console.log(presetCode)
+// console.log(presetCode)
