@@ -1,9 +1,16 @@
 import { describe, expect, it } from 'vitest'
-import { autoTrackCode, importDeclarationVisitTime } from '../../src'
+import {
+  autoTrackCode,
+  importDeclarationVisitTime,
+  importFunctionVisitTime,
+  enterTime,
+} from '../../src'
 
 describe('should', () => {
   it('exported', () => {
+    expect(enterTime).toMatchInlineSnapshot('67')
     expect(importDeclarationVisitTime).toBe(1)
+    expect(importFunctionVisitTime).toBe(4)
     expect(autoTrackCode).toMatchInlineSnapshot(`
       "import tracker from 'tracker';
       import aa from 'aa';

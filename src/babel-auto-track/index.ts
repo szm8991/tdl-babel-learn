@@ -19,12 +19,16 @@ const sourceCode = fs.readFileSync(path.join(__dirname, './sourceCode.js'), {
 const ast = parser.parse(sourceCode, {
   sourceType: 'unambiguous',
 })
+export let enterTime = 0
 export let importDeclarationVisitTime = 0
+export let importFunctionVisitTime = 0
 const trackerPath = 'tracker'
 traverse(
   ast,
   {
+    // 每个节点enter时都调用这个visitor函数
     enter(path, state) {
+      enterTime++
       path.traverse({
         ImportDeclaration(curPath) {
           importDeclarationVisitTime++
@@ -58,6 +62,7 @@ traverse(
       state.trackerAST = template.statement(`${state.trackerImportId}()`)()
     },
     'ClassMethod|ArrowFunctionExpression|FunctionExpression|FunctionDeclaration'(path, state) {
+      importFunctionVisitTime++
       const bodyPath = path.get('body')
       if (bodyPath.isBlockStatement()) {
         // console.log(1)
