@@ -46,7 +46,7 @@ traverse(
               // console.log(state.trackerImportId)
             } else if (specifierPath.isImportDefaultSpecifier()) {
               state.trackerImportId = specifierPath.get('local').toString()
-              console.log(state.trackerImportId)
+              // console.log(state.trackerImportId)
             }
             // 终止当前path的遍历
             curPath.stop()
@@ -83,3 +83,5 @@ traverse(
 )
 
 export const { code: autoTrackCode } = generate(ast)
+
+export { code as autoTrackPluginCode } from './plugin'

@@ -17,7 +17,7 @@
   "scripts": {
     "build": "unbuild",
     "test": "vitest -w",
-    "test:update": "vitest -u",
+    "test:u": "vitest -w -u",
     "typecheck": "tsc --noEmit",
     "start": "esno src/test.ts"
   },
