@@ -18,7 +18,7 @@ export const autoTrackPlugin = declare((api, options, dirname) => {
                   state.trackerImportId = specifierPath.get('local').toString()
                 } else if (specifierPath.isImportDefaultSpecifier()) {
                   state.trackerImportId = specifierPath.get('local').toString()
-                  console.log(state.trackerImportId)
+                  // console.log(state.trackerImportId)
                 }
                 curPath.stop()
               }
@@ -35,10 +35,10 @@ export const autoTrackPlugin = declare((api, options, dirname) => {
       'ClassMethod|ArrowFunctionExpression|FunctionExpression|FunctionDeclaration'(path, state) {
         const bodyPath = path.get('body')
         if (bodyPath.isBlockStatement()) {
-          // console.log(1)
+          // 有函数体就在开始插入埋点代码
           bodyPath.node.body.unshift(state.trackerAST)
         } else {
-          // console.log(2)
+          // 当然有的函数没有函数体，这种要包装一下，然后修改下 return 值
           const ast = api.template.statement(`{${state.trackerImportId}();return PREV_BODY;}`)({
             PREV_BODY: bodyPath.node,
           })

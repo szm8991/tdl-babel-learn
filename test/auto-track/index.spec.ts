@@ -8,36 +8,37 @@ import {
 
 describe('should', () => {
   it('exported', () => {
-    expect(enterTime).toMatchInlineSnapshot('67')
+    expect(enterTime).toMatchInlineSnapshot('68')
     expect(importDeclarationVisitTime).toBe(1)
     expect(importFunctionVisitTime).toBe(4)
     expect(autoTrackCode).toMatchInlineSnapshot(`
-      "import tracker from 'tracker';
+      "// import tracker from 'tracker'
+      import { tracking } from 'tracker';
       import aa from 'aa';
       import * as bb from 'bb';
       import { cc } from 'cc';
       import 'dd';
 
       function a() {
-        tracker();
+        tracking();
         console.log('aaa');
       }
 
       class B {
         bb() {
-          tracker();
+          tracking();
           return 'bbb';
         }
 
       }
 
       const c = () => {
-        tracker();
+        tracking();
         return 'ccc';
       };
 
       const d = function () {
-        tracker();
+        tracking();
         console.log('ddd');
       };"
     `)

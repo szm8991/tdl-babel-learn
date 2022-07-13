@@ -3,7 +3,8 @@ import { autoTrackPluginCode } from '../../src'
 describe('should', () => {
   it('exported', () => {
     expect(autoTrackPluginCode).toMatchInlineSnapshot(`
-      "import tracker from 'tracker';
+      "// import tracker from 'tracker'
+      import { tracking } from 'tracker';
       import aa from 'aa';
       import * as bb from 'bb';
       import { cc } from 'cc';
@@ -21,7 +22,7 @@ describe('should', () => {
       }
 
       const c = () => {
-        tracker();
+        tracking();
         return 'ccc';
       };
 

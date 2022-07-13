@@ -43,6 +43,12 @@ importers:
     dependencies:
       acorn: registry.npmmirror.com/acorn/8.7.1
 
+  src/babel-auto-i18n:
+    specifiers:
+      '@babel/helper-plugin-utils': ^7.18.6
+    dependencies:
+      '@babel/helper-plugin-utils': registry.npmmirror.com/@babel/helper-plugin-utils/7.18.6
+
   src/babel-code-frame:
     specifiers:
       '@babel/code-frame': ^7.16.7
