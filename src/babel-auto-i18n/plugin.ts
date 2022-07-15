@@ -30,7 +30,7 @@ export const autoI18nPlugin = declare((api, options, dirname) => {
     const expressionParams = path.isTemplateLiteral()
       ? path.node.expressions.map(item => {
           const code = generate(item).code
-          console.log(code)
+          // console.log(code)
           return code
         })
       : null
@@ -91,7 +91,7 @@ export const autoI18nPlugin = declare((api, options, dirname) => {
               // jsx中的pure className应该也不国际化
               if (curPath.findParent(p => p.isJSXAttribute())) {
                 if (curPath.findParent(p => p.isJSXAttribute()).node.name.name === 'className') {
-                  console.log('get it')
+                  // console.log('get it')
                   curPath.node.skipTransform = true
                 }
               }
@@ -133,7 +133,7 @@ export const autoI18nPlugin = declare((api, options, dirname) => {
     },
     post(file) {
       const allText = file.get('allText')
-      console.log(allText)
+      // console.log(allText)
       const intlData = allText.reduce((obj, item) => {
         obj[item.key] = item.value
         return obj
