@@ -1,9 +1,6 @@
 import { transformFromAstSync } from '@babel/core'
 import parser from '@babel/parser'
 import { forDirectionLintPlugin } from './plugin/babel-for-direction-lint-plugin'
-import { dirname } from 'node:path'
-import { fileURLToPath } from 'node:url'
-const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const sourceCode = `
 for (var i = 0; i < 10; i++) {

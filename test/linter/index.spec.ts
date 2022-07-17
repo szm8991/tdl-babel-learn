@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest'
-import { forDirectionLintCode, forDirError } from '../../src'
+import {
+  forDirectionLintCode,
+  forDirError,
+  noFuncAssignLintCode,
+  noFuncAssignError,
+} from '../../src'
 
 describe('should', () => {
   it('for-direction-lint-entry', () => {
@@ -12,6 +17,18 @@ describe('should', () => {
       for (var i = 0; i < 10; i--) {}
 
       for (var i = 10; i >= 0; i++) {}"
+    `)
+  })
+  it('no-func-assign-lint-entry', () => {
+    expect(noFuncAssignError).toBe(true)
+    expect(noFuncAssignLintCode).toMatchInlineSnapshot(`
+      "function foo() {
+        foo = bar;
+      }
+
+      var a = function hello() {
+        hello = 123;
+      };"
     `)
   })
 })
