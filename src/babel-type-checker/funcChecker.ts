@@ -1,20 +1,21 @@
 import { transformFromAstSync } from '@babel/core'
 import parser from '@babel/parser'
-import { basicChecker } from './plugin/babel-basic-checker-plugin'
+import { basicFuncChecker } from './plugin/babel-func-checker-plugin'
 const sourceCode = `
-let name: string;
-name = 111;
-let age: number = 'szm';
+function add(a: number, b: number): number{
+    return a + b;
+}
+add(1, '2');
 `
 const ast = parser.parse(sourceCode, {
   sourceType: 'unambiguous',
   plugins: ['typescript'],
 })
 
-export const { code: basicCheckerCode } = transformFromAstSync(ast, sourceCode, {
+export const { code: funcCheckerCode } = transformFromAstSync(ast, sourceCode, {
   plugins: [
     [
-      basicChecker,
+      basicFuncChecker,
       {
         fix: true,
       },
