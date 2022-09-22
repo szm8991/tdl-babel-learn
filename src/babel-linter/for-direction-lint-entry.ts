@@ -24,4 +24,4 @@ export const { code: forDirectionLintCode } = transformFromAstSync(ast, sourceCo
   filename: 'input.js',
 })
 
-export { forDirError } from './plugin/babel-for-direction-lint-plugin'
+export { forDirError, forDirectionLintError } from './plugin/babel-for-direction-lint-plugin'

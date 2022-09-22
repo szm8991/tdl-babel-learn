@@ -1,5 +1,6 @@
 import { declare } from '@babel/helper-plugin-utils'
 export let noFuncAssignError = false
+export let noFuncAssignLintError = null
 export const noFuncAssignLintPlugin = declare((api, options, dirname) => {
   api.assertVersion(7)
 
@@ -24,7 +25,7 @@ export const noFuncAssignLintPlugin = declare((api, options, dirname) => {
       },
     },
     post(file) {
-      console.log(file.get('errors'))
+      noFuncAssignLintError = file.get('errors')
     },
   }
 })

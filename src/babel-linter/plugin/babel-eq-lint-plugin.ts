@@ -1,5 +1,6 @@
 import { declare } from '@babel/helper-plugin-utils'
 export let doubleEqError = false
+export let eqLintError = null
 export const eqLintPlugin = declare((api, options, dirname) => {
   api.assertVersion(7)
 
@@ -39,7 +40,7 @@ export const eqLintPlugin = declare((api, options, dirname) => {
       },
     },
     post(file) {
-      console.log(file.get('errors'))
+      eqLintError = file.get('errors')
     },
   }
 })

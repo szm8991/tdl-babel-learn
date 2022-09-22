@@ -21,4 +21,4 @@ export const { code: noFuncAssignLintCode } = transformFromAstSync(ast, sourceCo
   filename: 'input.js',
 })
 
-export { noFuncAssignError } from './plugin/babel-no-func-assign-lint-plugin'
+export { noFuncAssignError, noFuncAssignLintError } from './plugin/babel-no-func-assign-lint-plugin'

@@ -1,6 +1,7 @@
 import { transformFromAstSync } from '@babel/core'
 import parser from '@babel/parser'
 import { basicChecker } from './plugin/babel-basic-checker-plugin'
+export { basicError } from './plugin/babel-basic-checker-plugin'
 const sourceCode = `
 let name: string;
 name = 111;

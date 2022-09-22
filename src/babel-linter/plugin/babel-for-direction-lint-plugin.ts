@@ -1,5 +1,6 @@
 import { declare } from '@babel/helper-plugin-utils'
 export let forDirError = false
+export let forDirectionLintError = null
 export const forDirectionLintPlugin = declare((api, options, dirname) => {
   api.assertVersion(7)
 
@@ -30,7 +31,7 @@ export const forDirectionLintPlugin = declare((api, options, dirname) => {
       },
     },
     post(file) {
-      console.log(file.get('errors'))
+      forDirectionLintError = file.get('errors')
     },
   }
 })

@@ -26,7 +26,7 @@ function noStackTraceWrapper(cb) {
   cb && cb(Error)
   Error.stackTraceLimit = tmp
 }
-
+export let basicError = null
 export const basicChecker = declare((api, options, dirname) => {
   api.assertVersion(7)
 
@@ -68,7 +68,7 @@ export const basicChecker = declare((api, options, dirname) => {
       },
     },
     post(file) {
-      console.log(file.get('errors'))
+      basicError = file.get('errors')
     },
   }
 })

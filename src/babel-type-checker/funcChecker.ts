@@ -1,11 +1,16 @@
 import { transformFromAstSync } from '@babel/core'
 import parser from '@babel/parser'
 import { basicFuncChecker } from './plugin/babel-func-checker-plugin'
+export { funcError } from './plugin/babel-func-checker-plugin'
 const sourceCode = `
 function add(a: number, b: number): number{
     return a + b;
 }
 add(1, '2');
+function sum<T>(a: T, b: T) {
+    return a * b;
+}
+add<number>(1, '2');
 `
 const ast = parser.parse(sourceCode, {
   sourceType: 'unambiguous',

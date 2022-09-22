@@ -28,4 +28,4 @@ export const { code: eqLintCode } = transformFromAstSync(ast, sourceCode, {
   ],
 })
 
-export { doubleEqError } from './plugin/babel-eq-lint-plugin'
+export { doubleEqError, eqLintError } from './plugin/babel-eq-lint-plugin'
