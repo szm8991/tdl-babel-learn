@@ -11,6 +11,11 @@ function sum<T>(a: T, b: T) {
     return a * b;
 }
 add<number>(1, '2');
+type Res<Param> = Param extends 1 ? number : string;
+function doubleAdd<T>(a: T, b: T) {
+    return 2 * (a + b);
+}
+doubleAdd<Res<2>>(1, '2');
 `
 const ast = parser.parse(sourceCode, {
   sourceType: 'unambiguous',
