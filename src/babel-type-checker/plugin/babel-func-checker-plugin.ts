@@ -96,7 +96,7 @@ export const basicFuncChecker = declare((api, options, dirname) => {
         const declareParamsTypes = functionDeclarePath.get('params').map(item => {
           return resolveTSType(item.getTypeAnnotation(), realTypeMap)
         })
-        console.log(argumentsTypes)
+        // console.log(argumentsTypes)
         argumentsTypes.forEach((item, index) => {
           if (item !== declareParamsTypes[index]) {
             noStackTraceWrapper(Error => {
