@@ -1,10 +1,10 @@
 import { Parser } from 'acorn'
 import { plugin } from './plugin'
-const newParser = Parser.extend(plugin)
+const newParser = Parser.extend(plugin as any)
 
-var program = `
+const program = `
     ming
     const a = 1
 `
 
-export const ast = newParser.parse(program)
+export const ast = newParser.parse(program, { ecmaVersion: 'latest' })
