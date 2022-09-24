@@ -74,9 +74,9 @@ const evaluator = (function () {
         throw Error('duplicate declare variable：' + declareName)
       } else {
         scope.set(declareName, function (...args) {
+          // new funcScope
           const funcScope = new Scope()
           funcScope.parent = scope
-
           node.params.forEach((item, index) => {
             funcScope.set(item.name, args[index])
           })
@@ -123,6 +123,8 @@ const evaluator = (function () {
           return leftValue * rightValue
         case '/':
           return leftValue / rightValue
+        case '%':
+          return leftValue % rightValue
         default:
           throw Error('upsupported operator:' + node.operator)
       }
