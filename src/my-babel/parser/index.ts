@@ -1,8 +1,7 @@
 import { Parser } from 'acorn'
-import { literal, ming } from './plugin'
+import { literal } from './plugin'
 const syntaxPlugins = {
   literal,
-  ming,
 }
 
 const defaultOptions = {

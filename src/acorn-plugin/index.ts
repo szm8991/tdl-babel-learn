@@ -7,4 +7,4 @@ const program = `
     const a = 1
 `
 
-export const ast = newParser.parse(program, { ecmaVersion: 'latest' })
+export const mingAst = newParser.parse(program, { ecmaVersion: 'latest' })
