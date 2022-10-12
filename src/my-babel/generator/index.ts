@@ -7,11 +7,11 @@ class Printer {
   public printColumn: any = 0
   constructor(source, public fileName?: any) {
     this.buf = ''
-    this.sourceMapGenerator = new SourceMapGenerator({
-      file: fileName + '.map.json',
-    })
+    // this.sourceMapGenerator = new SourceMapGenerator({
+    //   file: fileName + '.map.json',
+    // })
     this.fileName = fileName
-    this.sourceMapGenerator.setSourceContent(fileName, source)
+    // this.sourceMapGenerator.setSourceContent(fileName, source)
   }
 
   addMapping(node) {
@@ -39,7 +39,7 @@ class Printer {
   }
 
   Program(node) {
-    this.addMapping(node)
+    // this.addMapping(node)
     node.body.forEach(item => {
       this[item.type](item) + ';'
       this.printColumn++
@@ -51,7 +51,7 @@ class Printer {
     if (!node.declarations.length) {
       return
     }
-    this.addMapping(node)
+    // this.addMapping(node)
 
     this.buf += node.kind
     this.space()
@@ -66,18 +66,18 @@ class Printer {
     this.printColumn++
   }
   VariableDeclarator(node) {
-    this.addMapping(node)
+    // this.addMapping(node)
     this[node.id.type](node.id)
     this.buf += '='
     this.printColumn++
     this[node.init.type](node.init)
   }
   Identifier(node) {
-    this.addMapping(node)
+    // this.addMapping(node)
     this.buf += node.name
   }
   FunctionDeclaration(node) {
-    this.addMapping(node)
+    // this.addMapping(node)
 
     this.buf += 'function '
     this.buf += node.id.name
@@ -90,7 +90,7 @@ class Printer {
     this.nextLine()
   }
   CallExpression(node) {
-    this.addMapping(node)
+    // this.addMapping(node)
 
     this[node.callee.type](node.callee)
     this.buf += '('
@@ -101,25 +101,25 @@ class Printer {
     this.buf += ')'
   }
   ExpressionStatement(node) {
-    this.addMapping(node)
+    // this.addMapping(node)
 
     this[node.expression.type](node.expression)
   }
   ReturnStatement(node) {
-    this.addMapping(node)
+    // this.addMapping(node)
 
     this.buf += 'return '
     this[node.argument.type](node.argument)
   }
   BinaryExpression(node) {
-    this.addMapping(node)
+    // this.addMapping(node)
 
     this[node.left.type](node.left)
     this.buf += node.operator
     this[node.right.type](node.right)
   }
   BlockStatement(node) {
-    this.addMapping(node)
+    // this.addMapping(node)
 
     node.body.forEach(item => {
       this.buf += '    '
@@ -129,7 +129,7 @@ class Printer {
     })
   }
   NumericLiteral(node) {
-    this.addMapping(node)
+    // this.addMapping(node)
 
     this.buf += node.value
   }
@@ -140,10 +140,11 @@ class Generator extends Printer {
   }
 
   generate(node) {
+    console.log(node.type)
     this[node.type](node)
     return {
       code: this.buf,
-      map: this.sourceMapGenerator.toString(),
+      // map: this.sourceMapGenerator.toString(),
     }
   }
 }

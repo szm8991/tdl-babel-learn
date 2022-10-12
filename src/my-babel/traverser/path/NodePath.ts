@@ -2,6 +2,8 @@ import { helper } from '../../helper'
 import { Scope } from './scope'
 import { myTraverse } from '../index'
 import { myGenerate } from '../../generator'
+
+// path 保存当前节点和父节点，并且能够拿到节点，可以基于节点来提供一系列增删改的 api
 export class NodePath {
   private __scope: any
   constructor(public node, public parent, public parentPath, public key, public listKey) {
