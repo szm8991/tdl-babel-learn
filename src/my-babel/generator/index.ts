@@ -40,6 +40,7 @@ class Printer {
 
   Program(node) {
     this.addMapping(node)
+    // 遍历处理Node所有子节点
     node.body.forEach(item => {
       this[item.type](item) + ';'
       this.printColumn++
@@ -140,7 +141,6 @@ class Generator extends Printer {
   }
 
   generate(node) {
-    console.log(node.type)
     this[node.type](node)
     return {
       code: this.buf,

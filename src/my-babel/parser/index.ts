@@ -17,5 +17,6 @@ export function myParse(code, options) {
   }, Parser)
   return newParser.parse(code, {
     locations: true,
+    ecmaVersion: 'latest',
   })
 }
