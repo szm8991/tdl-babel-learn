@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { myParse, myTraverse, myGenerate } from '../../src'
 
 describe('should', () => {
-  it('parse', () => {
+  it('basic babel function', () => {
     const sourceCode = `
         const c = 1
         const d = 2
@@ -34,7 +34,7 @@ describe('should', () => {
     })
     const str2 = JSON.stringify(ast)
     expect(str1).not.toEqual(str2)
-    const { code } = myGenerate(ast, sourceCode, 'foo.js')
+    const { code, map } = myGenerate(ast, sourceCode, 'dist.js')
     expect(code).toMatchInlineSnapshot(`
       "const c=1;
       const d=2;
@@ -47,6 +47,6 @@ describe('should', () => {
       add(c, d)
       "
     `)
-    // console.log(map)
+    expect(map).toMatchInlineSnapshot('"{\\"version\\":3,\\"sources\\":[\\"dist.js\\"],\\"names\\":[],\\"mappings\\":\\"AAAA,AACQ,CAAM,CAAI;AACV,CAAM,CAAI;;AAGV;AAAmB;IAEf,AAAO,AAAI;;;AAEf,AAAI,AAAG\\",\\"file\\":\\"dist.js.map.json\\",\\"sourcesContent\\":[\\"\\\\n        const c = 1\\\\n        const d = 2\\\\n        const e = 4\\\\n\\\\n        function add(a, b) {\\\\n            const tmp = 1\\\\n            return a + b\\\\n        }\\\\n        add(c, d)\\\\n    \\"]}"')
   })
 })

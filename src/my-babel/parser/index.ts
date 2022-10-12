@@ -6,6 +6,7 @@ const syntaxPlugins = {
 
 const defaultOptions = {
   plugins: [],
+  ecmaVersion: 'latest',
 }
 
 export function myParse(code, options) {
