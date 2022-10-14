@@ -1,0 +1,1 @@
+{"version":3,"sources":["2.js"],"names":[],"mappings":"AAAA;AAAqB,IACnB,AAAO,AAAI;;;AAGb,AAAM,AAAG","file":"2.js.map.json","sourcesContent":["function minus(a, b) {\r\n  return a - b\r\n}\r\n\r\nminus(3, 4)\r\n"]}

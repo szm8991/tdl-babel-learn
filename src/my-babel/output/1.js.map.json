@@ -1,0 +1,1 @@
+{"version":3,"sources":["1.js"],"names":[],"mappings":"AAAA,CAAM,CAAI;AACV,CAAM,CAAI;;;AAIV;AAAmB;IAEjB,AAAO,AAAI;;;AAGb,AAAI,AAAG","file":"1.js.map.json","sourcesContent":["const c = 1\r\nconst d = 2\r\nconst e = 4\r\nconst f = 3\r\n\r\nfunction add(a, b) {\r\n  const tmp = 1\r\n  return a + b\r\n}\r\n\r\nadd(c, d)\r\n"]}
